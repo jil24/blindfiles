@@ -1,4 +1,5 @@
-#blindfiles <img style="float:right" src="blindfiles.png">
+#blindfiles
+![icon]
 
 A simple filename randomizer for experimental results requiring blind analysis.
 
