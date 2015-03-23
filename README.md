@@ -21,13 +21,17 @@ Download the [most recent release]:
 * You will also need a place to put the blinded copy, so create an empty folder.
 * Run the program.
   * It will prompt you for the source directory, destination directory, and for the file extension to randomize.
-  * Find your randomized files your selected destination directory, along with a key, `index.txt`, which reveals the original name of the file. No peeking until you're done scoring!
+  * Find your randomized files in your selected destination directory, along with a key, `index.txt`, which reveals the original name of the file. No peeking until you're done scoring!
 
 #### Usage (CLI/python)
 ```
 blindfiles.py [source] [destination - must be empty, will be created if it doesn't exist] [file extension]
 ```
 Pretty simple.
+
+#### It didn't do anything!
+* The destination directory must be empty. If it doesn't exist, it will be created.
+* If it still doesn't work it's probably broken. File an [issue].
 
 [icon]: blindfiles.png
 [most recent release]: https://github.com/jil24/blindfiles/releases
@@ -38,3 +42,4 @@ Pretty simple.
 [easygui]: http://easygui.sourceforge.net/
 [easydialogs]: http://www.averdevelopment.com/python/EasyDialogs.html
 [vcppruntime]: http://www.microsoft.com/downloads/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf&displaylang=en
+[issue]: https://github.com/jil24/blindfiles/issues
