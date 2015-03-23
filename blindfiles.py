@@ -4,16 +4,16 @@ import os
 import sys
 import re
 import shutil
-import easygui
+import EasyDialogs
 from random import sample
 
 if len(sys.argv) == 1:
     print("use `blindfiles.py --help` for command line options")
-    origdir = easygui.diropenbox(title="Choose directory with files to blind")
+    origdir = EasyDialogs.AskFolder(message="Choose directory with files to blind", windowTitle = "Choose Source")
     if origdir is None: sys.exit()
-    blinddir = easygui.diropenbox(title="Choose empty directory to place blinded files")
+    blinddir = EasyDialogs.AskFolder(message="Choose an empty directory to place blinded files", windowTitle="Choose Destination")
     if blinddir is None: sys.exit()
-    suffix =  easygui.enterbox(msg='Enter file extensions to blind (e.g. `.jpg` or `.tif`)', title='File extensions to blind', default='.tif', strip=True)
+    suffix = EasyDialogs.AskString(prompt='Enter file extensions to blind (e.g. `.jpg` or `.tif`)', default='.tif')
     if suffix is None: sys.exit()
 elif len(sys.argv) < 4:
     print("")
