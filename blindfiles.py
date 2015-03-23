@@ -4,16 +4,32 @@ import os
 import sys
 import re
 import shutil
-import EasyDialogs
+
+myos = sys.platform
+
+if myos == 'win32':
+    import EasyDialogs
+if myos == 'darwin':
+    import easygui
+
 from random import sample
 
 if len(sys.argv) == 1:
     print("use `blindfiles.py --help` for command line options")
-    origdir = EasyDialogs.AskFolder(message="Choose directory with files to blind", windowTitle = "Choose Source")
+    if myos == 'win32':
+        origdir = EasyDialogs.AskFolder(message="Choose directory with files to blind", windowTitle = "Choose Source")
+    if myos == 'darwin':
+        origdir = easygui.diropenbox(title="Choose directory with files to blind")
     if origdir is None: sys.exit()
-    blinddir = EasyDialogs.AskFolder(message="Choose an empty directory to place blinded files", windowTitle="Choose Destination")
+    if myos == 'win32':
+        blinddir = EasyDialogs.AskFolder(message="Choose an empty directory to place blinded files", windowTitle="Choose Destination")
+    if myos == 'darwin':
+        blinddir = easygui.diropenbox(title="Choose empty directory to place blinded files")
     if blinddir is None: sys.exit()
-    suffix = EasyDialogs.AskString(prompt='Enter file extensions to blind (e.g. `.jpg` or `.tif`)', default='.tif')
+    if myos == 'win32':
+        suffix = EasyDialogs.AskString(prompt='Enter file extensions to blind (e.g. `.jpg` or `.tif`)', default='.tif')
+    if myos == 'darwin':
+        suffix = easygui.enterbox(msg='Enter file extensions to blind (e.g. `.jpg` or `.tif`)', title='File extensions to blind', default='.tif', strip=True)
     if suffix is None: sys.exit()
 elif len(sys.argv) < 4:
     print("")
