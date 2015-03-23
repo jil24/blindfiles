@@ -8,12 +8,13 @@ A simple filename randomizer for experimental results requiring blind analysis.
 Download the [most recent release]:
 * [Windows][win32] (Tested on Windows 7)
   - Simply run the .exe file.
+  - If Windows complains about not having MSVCR90.DLL, you can install this package from [Microsoft][vcppruntime]
 
 * [Mac OS X][osx] (Tested on Yosemite).
   - Extract the .zip file whereever you like, then run the program.
 
 * Cross-platform [Python]  
-  - (python version requires packages [`easygui`][easygui] on OS X and a windows port of [`EasyDialogs`][easydialogs] on Win32)
+  - python version requires packages [`easygui`][easygui] on OS X and a windows port of [`EasyDialogs`][easydialogs] on Win32
 
 #### Usage (GUI):
 * You will need to have some files whose names you want to randomize. Put them all in one folder, or alternatively, you can randomize an entire directory tree as-is.
@@ -36,3 +37,4 @@ Pretty simple.
 [Python]: blindfiles.py?raw=True
 [easygui]: http://easygui.sourceforge.net/
 [easydialogs]: http://www.averdevelopment.com/python/EasyDialogs.html
+[vcppruntime]: http://www.microsoft.com/downloads/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf&displaylang=en
