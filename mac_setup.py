@@ -9,7 +9,8 @@ from setuptools import setup
 
 APP = ['blindfiles.py']
 DATA_FILES = []
-OPTIONS = {'argv_emulation': True}
+OPTIONS = {'argv_emulation': True,
+ 'iconfile': '/Users/Yashka/Projects/Blindfiles/blindfiles.icns'}
 
 setup(
     app=APP,
