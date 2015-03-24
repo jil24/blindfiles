@@ -12,6 +12,19 @@ if myos == 'win32':
 if myos == 'darwin':
     import easygui
 
+def showMessage(message=''):
+    if len(sys.argv) == 1:
+        if myos == 'win32':
+            EasyDialogs.Message(message)
+            return None
+        if myos == 'darwin':
+            easygui.msgbox(message)
+            return None
+    else:
+        print(str(message)+"\n")
+        return None
+            
+
 from random import sample
 
 if len(sys.argv) == 1:
@@ -61,24 +74,28 @@ blindingarray = sample(xrange(len(filenamearray)), len(filenamearray))
 blinded = zip(blindingarray, filenamearray, fullpatharray)
 
 if len(blinded) == 0:
-    print("No files to blind")
+    showMessage("Error: No files matched the extension specified.")
     sys.exit()
+
+nfiles = len(blinded)
+digitsneeded = len(str(nfiles))
 
 if not os.path.exists(blinddir):
     os.makedirs(blinddir)
     print("Creating directory " + blinddir)
 #don't block on dotfiles. I'm lookin at you, .DS_Store!
 if [f for f in os.listdir(blinddir) if not f.startswith('.')] != []:
-    print("Error! Directory to place blinded files must not exist or must be empty")
+    showMessage("Error: Directory to place blinded files must either not exist or be empty")
     sys.exit()
 
 index = open(os.path.join(blinddir,"index.txt"), "w")
 index.write("Blind File\tOrig File\tOrig pathfile\n")
 
 for entry in blinded:
-    newbasename=str(entry[0])
+    newbasename= '%0*d' % (digitsneeded,entry[0]+1)
     newextension=os.path.splitext(entry[2])[1]
     index.write(newbasename+newextension+"\t"+entry[1]+"\t"+entry[2]+"\n")
     shutil.copy(entry[2], os.path.join(blinddir,newbasename+newextension))
-
 index.close()
+
+showMessage("Success: Blinded " + str(nfiles) + " files.\n")
