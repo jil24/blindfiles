@@ -44,7 +44,7 @@ if len(sys.argv) == 1:
     if myos == 'darwin':
         suffix = easygui.enterbox(msg='Enter file extensions to blind (e.g. `.jpg` or `.tif`)', title='File extensions to blind', default='.tif', strip=True)
     if suffix is None: sys.exit()
-elif len(sys.argv) < 4:
+elif len(sys.argv) < 3:
     print("")
     print("blindfiles.py assigns files in a directory tree a random name to reduce bias during subjective scoring procedures")
     print("original names and paths are stored in index.txt")
@@ -55,7 +55,8 @@ elif len(sys.argv) < 4:
 else:
     origdir = sys.argv[1]
     blinddir = sys.argv[2]
-    suffix = sys.argv[3]
+    if len(sys.argv) > 3: suffix = sys.argv[3]
+    else: suffix = ''
 
 filenamearray = []
 fullpatharray = []
@@ -63,9 +64,9 @@ fullpatharray = []
 # example code modified from stackoverflow.com
 for dirname, dirnames, filenames in os.walk(origdir):
     for filename in filenames:
-        if filename.endswith(suffix):
-#        if re.search(suffix+"$",filename):
-            fullpath = os.path.join(dirname, filename)
+        fullpath = os.path.join(dirname, filename)
+        #hardcoded to ignore dotfiles
+        if filename.endswith(suffix) and os.path.isfile(fullpath) and (not filename.startswith(".")):
             filenamearray.append(filename)
             fullpatharray.append(fullpath)
 

@@ -24,9 +24,9 @@ Download the [most recent release]:
   * Find your randomized files in your selected destination directory, along with a key, `index.txt`, which reveals the original name of the file. No peeking until you're done scoring!
 
 #### Usage (CLI/python)
-```
-blindfiles.py [source] [destination - must be empty, will be created if it doesn't exist] [file extension]
-```
+
+`blindfiles.py [source] [destination - must be empty, will be created if it doesn't exist] [file extension]`
+
 Pretty simple.
 
 #### It didn't do anything!
