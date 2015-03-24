@@ -20,12 +20,17 @@ Download the [most recent release]:
 * You will need to have some files whose names you want to randomize. Put them all in one folder, or alternatively, you can randomize an entire directory tree as-is.
 * You will also need a place to put the blinded copy, so create an empty folder.
 * Run the program.
-  * It will prompt you for the source directory, destination directory, and for the file extension to randomize.
+  * It will prompt you for the source directory, destination directory, and for the file extension to randomize. Leave the extension blank to blind all files.
   * Find your randomized files in your selected destination directory, along with a key, `index.txt`, which reveals the original name of the file. No peeking until you're done scoring!
 
 #### Usage (CLI/python)
 
-`blindfiles.py [source] [destination - must be empty, will be created if it doesn't exist] [file extension]`
+`blindfiles.py source destination [file extension]`
+
+`source` and `destination`: directories. contents of `source` will be blinded recursively.
+`destination` must be empty (dot-files are ignored) or not exist  
+`file extension`: file types to blind. If omitted, will blind all files.
+dotfiles are always ignored.
 
 Pretty simple.
 
