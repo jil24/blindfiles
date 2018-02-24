@@ -1,4 +1,4 @@
-#blindfiles
+# blindfiles
 ![icon]
 
 A simple filename randomizer for experimental results requiring blind analysis.
